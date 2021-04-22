@@ -16,13 +16,16 @@ class MainActivity : AppCompatActivity() {
 
 
 
+        //Viewmodel to hold data
         var viewModel:MainActivityViewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
+        //increment the value on click
         findViewById<FloatingActionButton>(R.id.increment_button)
             .setOnClickListener {
                 viewModel.increment()
             }
 
+        //make the textview observe the live data
         viewModel.number.observe(this, Observer {
             findViewById<TextView>(R.id.textView).text = it.toString()
         })
